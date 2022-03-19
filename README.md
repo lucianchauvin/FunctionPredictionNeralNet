@@ -1,5 +1,5 @@
 # Function Prediction Neural-Net
-For two mathematical objects X(z), Y(z) , if there exists a machine that can learn f such that f(X(z)) is approximately equal to Y(z) , there is a certain relationship between X and Y. This relationship can be expressed by saliency (the patterns in hiden layers). It is then analyzed to find the pattern and understand the connection between X(z) and Y(z).
+For two mathematical objects X(z), Y(z) , if there exists a machine that can learn f such that f(X(z)) is approximately equal to Y(z) , there is a certain relationship between X and Y. This relationship can be expressed by saliency (the patterns in hidden layers). It is then analyzed to find the pattern and understand the connection between X(z) and Y(z).
 
 Generates a predictive keras Neural Net model for any mathmatical function on a given interval. This was my first real interaction with neural nets and machine learning. 
 It works by generating data from the given function, mapping it to a scaled sigmoid function, and then train the keras sequential model from this data. I learned a lot from this project from normalizing data before training, using activation layers, and just generally how neural nets work. 
