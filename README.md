@@ -7,4 +7,4 @@ One major problem that is still inculded in this code is that func(min) and func
 
 ## References
 <a id="1">[1]</a> 
-https://www.nature.com/articles/s41586-021-04086-x
+https://www.nature.com/articles/s41586-021-04086-x, "For two mathematical objects X(z), Y(z) , if machine learning can learn f such that f(X(z)) is approximately equal to Y(z) , it means that there is a certain relationship between X and Y."
