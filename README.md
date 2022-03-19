@@ -4,3 +4,7 @@ It works by generating data from the given function, mapping it to a scaled sigm
 
 # Issues
 One major problem that is still inculded in this code is that func(min) and func(max) should return the ABSOLUTE MAXIMUM of the function used on the inputed interval. This could be fixed by finding the ABSOLUTE min and max of this function using calculs instead of assuming where they are. 
+
+## References
+<a id="1">[1]</a> 
+https://www.nature.com/articles/s41586-021-04086-x
