@@ -19,29 +19,6 @@ import keras.backend as K
 from keras.utils.vis_utils import plot_model
 import numpy as np
 
-# Generates data for gamma function from n which is the maximum and step which is the step size, turns out this can be done a lot easier with nump. Also traning an Neural Net off of this data might be a bad idea due to how the inputs are not random.
-
-
-def genGammaData(n, step, nameloc):
-    if n > 170:
-        raise ValueError("n must be less than 170")
-    # Generates values for the x axis (inputs)
-    values = [x*step for x in range(int(n/step))]
-    nv = []
-    for x in values:
-        # fixes the fact that computers think .1 + .2 is 0.30000000000000004
-        nv.append(round(x, abs(round(math.log(step, 10)))))
-    with open(nameloc, 'w', encoding='UTF8', newline='') as f:
-        writer = csv.writer(f)
-        for x in nv:
-            # Writes the x and y values to the file, eventually this will be generalized to any function
-            writer.writerow([str(x), str(gamma(x+1))])
-
-# genGammaData(170, .0001, "data/gamma_0-170_E4.csv")
-# genGammaData(170, .00001, "data/gamma_0-170_E5.csv")
-# genGammaData(170, .000001, "data/gamma_0-170_E6.csv")
-
-
 # Generates random data for the neural net to be trained and use as validation
 DATA_SIZE = 5000000
 
@@ -50,10 +27,6 @@ def genData(min, max):
     x_ = (max-min) * np.random.rand(DATA_SIZE) + min
     y_ = sigmoid(gamma(x_ + 1), gamma(min + 1), gamma(max + 1))
     return x_, y_
-
-# Turns out both the sigmoid function and normalize function are both built into keras so these are pointless but I am going to leave them since I made them and the are essential to understand what is happening
-
-# These two functions are causing problems, although it still works pretty well
 
 
 def sigmoid(n, min, max):  # Non-Linear normilization, WHERE MIN MAX ARE ABSOLUTE MIN AND MAX ON THE INTERVAL
@@ -65,10 +38,6 @@ def sigmoid(n, min, max):  # Non-Linear normilization, WHERE MIN MAX ARE ABSOLUT
 # Inverse of sigmoid, WHERE MIN MAX ARE ABSOLUTE MIN AND MAX ON THE INTERVAL
 def sigmoidInverse(n, min, max):
     return math.log((1/n)-1)/(-8/(max-min)) + (max+min)/2
-
-
-def normalize(n, min, max):  # Linear normilization
-    return (n-min)/(max-min)
 
 
 # Neural Net
@@ -98,6 +67,5 @@ history = model.fit(x=x, y=y, epochs=1, batch_size=64,
 model.save('model.h5')
 
 reloaded = keras.models.load_model('model.h5')
-
 
 print(sigmoidInverse(reloaded.predict([4.8]), func(min), func(max)))
